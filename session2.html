@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Interaktif: Model-Model Komunikasi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active {
+            border-bottom: 3px solid #0284c7;
+            color: #0284c7;
+            font-weight: 700;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Header / Banner -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-indigo-600 flex items-center justify-center text-white shadow-lg font-bold text-lg">
+                        <i class="fa-solid font-bold fa-diagram-project"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold leading-tight">Pengantar Ilmu Komunikasi</h1>
+                        <p class="text-xs text-slate-400">Modul Interaktif: Model-Model Komunikasi (S-1)</p>
+                    </div>
+                </div>
+
+                <!-- Action Badge / Progress -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 block">Progres Pembelajaran</span>
+                        <div class="w-32 bg-slate-700 h-2 rounded-full mt-1 overflow-hidden">
+                            <div id="learning-progress" class="bg-brand-500 h-full w-1/5 transition-all duration-300"></div>
+                        </div>
+                    </div>
+                    <button onclick="scrollToSection('quiz')" class="bg-brand-600 hover:bg-brand-500 text-white text-xs px-3 py-2 rounded-lg font-medium transition flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap"></i> Kuis Evaluasi
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scrollable Navigation Tabs -->
+            <nav class="flex space-x-6 overflow-x-auto border-t border-slate-800 text-sm font-medium custom-scrollbar">
+                <button onclick="switchTab('pendahuluan')" id="tab-pendahuluan" class="tab-btn tab-active py-3 px-1 whitespace-nowrap flex items-center gap-2">
+                    <i class="fa-solid fa-compass"></i> Pendahuluan & CPMK
+                </button>
+                <button onclick="switchTab('models')" id="tab-models" class="tab-btn py-3 px-1 whitespace-nowrap flex items-center gap-2 text-slate-400 hover:text-slate-200">
+                    <i class="fa-solid fa-sitemap"></i> 6 Model Utama
+                </button>
+                <button onclick="switchTab('matriks')" id="tab-matriks" class="tab-btn py-3 px-1 whitespace-nowrap flex items-center gap-2 text-slate-400 hover:text-slate-200">
+                    <i class="fa-solid fa-table-list"></i> Matriks Perbandingan
+                </button>
+                <button onclick="switchTab('lembar-kerja')" id="tab-lembar-kerja" class="tab-btn py-3 px-1 whitespace-nowrap flex items-center gap-2 text-slate-400 hover:text-slate-200">
+                    <i class="fa-solid fa-pen-to-square"></i> Studi Kasus & Lembar Kerja
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn py-3 px-1 whitespace-nowrap flex items-center gap-2 text-slate-400 hover:text-slate-200">
+                    <i class="fa-solid fa-clipboard-check"></i> Self-Assessment
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- SECTION 1: PENDAHULUAN & CPMK -->
+        <section id="section-pendahuluan" class="tab-content block space-y-8 animate-fadeIn">
+            <!-- Hero Card -->
+            <div class="bg-gradient-to-r from-slate-900 via-brand-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="max-w-3xl space-y-4 relative z-10">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                        <i class="fa-solid fa-book-open"></i> Modul Pembelajaran Perkuliahan S-1
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Model-Model Komunikasi</h2>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        Model komunikasi adalah gambaran abstrak dan sistematis yang menjelaskan bagaimana proses komunikasi berlangsung. Model membantu kita memahami komponen-komponen utama, alur hubungan antar-unsur, serta dinamika yang terjadi dalam penyampaian dan penerimaan pesan.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="switchTab('models')" class="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition shadow-md flex items-center gap-2">
+                            Mulai Jelajahi 6 Model <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CPMK Card Grid -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-bullseye text-brand-600"></i> Capaian Pembelajaran Mata Kuliah (CPMK)
+                </h3>
+                <p class="text-sm text-slate-600">Setelah mempelajari modul ini, mahasiswa diharapkan mampu menguasai 3 kompetensi utama berikut:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                    <!-- CPMK 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl">1</div>
+                            <h4 class="font-bold text-slate-800">Menjelaskan Konsep Dasar</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Mampu menjelaskan konsep dasar, karakteristik, dan struktur dari 6 model utama komunikasi (S-R, Aristoteles, Lasswell, Shannon & Weaver, Schramm, dan Berlo).
+                            </p>
+                        </div>
+                        <label class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 cursor-pointer pt-2 border-t border-slate-100">
+                            <input type="checkbox" onchange="updateProgress()" class="cpmk-check rounded text-brand-600 focus:ring-brand-500 w-4 h-4">
+                            <span>Tandai selesai dipahami</span>
+                        </label>
+                    </div>
+
+                    <!-- CPMK 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-xl">2</div>
+                            <h4 class="font-bold text-slate-800">Membandingkan Model</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Membandingkan kelebihan, keterbatasan, serta pergeseran paradigma dari model linier, sirkular, hingga transaksional.
+                            </p>
+                        </div>
+                        <label class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 cursor-pointer pt-2 border-t border-slate-100">
+                            <input type="checkbox" onchange="updateProgress()" class="cpmk-check rounded text-brand-600 focus:ring-brand-500 w-4 h-4">
+                            <span>Tandai selesai dipahami</span>
+                        </label>
+                    </div>
+
+                    <!-- CPMK 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center font-bold text-xl">3</div>
+                            <h4 class="font-bold text-slate-800">Mengaplikasikan Kasus Nyata</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Mengaplikasikan model komunikasi yang tepat untuk menganalisis berbagai kasus interaksi manusia di kehidupan nyata dan media modern.
+                            </p>
+                        </div>
+                        <label class="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 cursor-pointer pt-2 border-t border-slate-100">
+                            <input type="checkbox" onchange="updateProgress()" class="cpmk-check rounded text-brand-600 focus:ring-brand-500 w-4 h-4">
+                            <span>Tandai selesai dipahami</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 6 MODEL KOMUNIKASI -->
+        <section id="section-models" class="tab-content hidden space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Eksplorasi 6 Model Komunikasi Utama</h2>
+                    <p class="text-sm text-slate-600">Pilih model untuk mempelajari struktur, contoh kasus, dan diagram interaktifnya.</p>
+                </div>
+
+                <!-- Model Selector Pills -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="showModel('sr')" id="mbtn-sr" class="model-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-brand-600 text-white shadow-sm">1. S - R</button>
+                    <button onclick="showModel('aristoteles')" id="mbtn-aristoteles" class="model-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 text-slate-700 hover:bg-slate-300">2. Aristoteles</button>
+                    <button onclick="showModel('lasswell')" id="mbtn-lasswell" class="model-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 text-slate-700 hover:bg-slate-300">3. Lasswell</button>
+                    <button onclick="showModel('shannon')" id="mbtn-shannon" class="model-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 text-slate-700 hover:bg-slate-300">4. Shannon & Weaver</button>
+                    <button onclick="showModel('schramm')" id="mbtn-schramm" class="model-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 text-slate-700 hover:bg-slate-300">5. Schramm</button>
+                    <button onclick="showModel('berlo')" id="mbtn-berlo" class="model-nav-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 text-slate-700 hover:bg-slate-300">6. Berlo (SMCR)</button>
+                </div>
+            </div>
+
+            <!-- MODEL 1: STIMULUS - RESPONSE -->
+            <div id="model-sr" class="model-detail-card space-y-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Model 1 • Psikologi Behavioristik</span>
+                            <h3 class="text-2xl font-bold text-slate-900">Model Stimulus - Response (S - R)</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-semibold">Linier Sederhana</span>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        Model Stimulus-Respon (S-R) merupakan model komunikasi yang paling dasar dan bersifat linier sederhana. Model ini dipengaruhi oleh aliran psikologi behavioristik (<em>behaviorism</em>). Model ini mengasumsikan bahwa perilaku manusia merupakan reaksi langsung dari rangsangan yang diterimanya.
+                    </p>
+
+                    <!-- Interactive Simulation Diagram -->
+                    <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-sm font-semibold text-brand-400"><i class="fa-solid fa-flask"></i> Simulasi Interaktif Model S-R</h4>
+                            <span class="text-xs text-slate-400">Klik tombol Stimulus di bawah</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 py-6">
+                            <!-- Stimulus Node -->
+                            <div id="sr-stimulus-box" class="w-48 p-4 rounded-xl bg-slate-800 border-2 border-brand-500 text-center transition-all duration-300">
+                                <span class="text-xs text-slate-400 block uppercase font-bold">Stimulus (S)</span>
+                                <span class="text-base font-bold text-brand-300 mt-1 block">Rangsangan / Pesan</span>
+                            </div>
+
+                            <div class="text-brand-400 text-2xl animate-pulse">
+                                <i class="fa-solid fa-right-long hidden sm:block"></i>
+                                <i class="fa-solid fa-down-long sm:hidden"></i>
+                            </div>
+
+                            <!-- Response Node -->
+                            <div id="sr-response-box" class="w-48 p-4 rounded-xl bg-slate-800 border-2 border-slate-700 text-center transition-all duration-300">
+                                <span class="text-xs text-slate-400 block uppercase font-bold">Response (R)</span>
+                                <span id="sr-response-text" class="text-base font-bold text-slate-400 mt-1 block">Menunggu Reaksi...</span>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center gap-3">
+                            <button onclick="triggerSR('lambaian')" class="px-3 py-2 bg-brand-600 hover:bg-brand-500 text-xs font-semibold rounded-lg transition">Simulasi 1: Lambaian Tangan</button>
+                            <button onclick="triggerSR('iklan')" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold rounded-lg transition">Simulasi 2: Iklan Diskon</button>
+                        </div>
+                    </div>
+
+                    <!-- Characteristics & Examples -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-list-check text-brand-600"></i> Karakteristik Utama</h4>
+                            <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li><strong>Linier Sederhana:</strong> Berjalan satu arah tanpa mempertimbangkan umpan balik yang kompleks.</li>
+                                <li><strong>Pasif:</strong> Menganggap khalayak/penerima mudah dipengaruhi secara langsung.</li>
+                                <li><strong>Sebab-Akibat:</strong> Terfokus pada hubungan sebab-akibat (<em>cause and effect</em>).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-lightbulb text-amber-500"></i> Contoh Kasus Realitas</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Seseorang melambaikan tangan (<em>S</em>) kepada temannya di seberang jalan, dan temannya secara spontan membalas melambaikan tangan (<em>R</em>). Dalam media massa klasik, iklan potongan harga besar-besaran (<em>S</em>) yang memicu orang langsung membeli produk (<em>R</em>) juga menggunakan logika S-R.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODEL 2: ARISTOTELES -->
+            <div id="model-aristoteles" class="model-detail-card hidden space-y-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Model 2 • Retorika Klasik (Public Speaking)</span>
+                            <h3 class="text-2xl font-bold text-slate-900">Model Aristoteles</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-semibold">Linier Retoris</span>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        Model Aristoteles adalah model komunikasi paling awal dalam sejarah filsafat barat yang dirumuskan untuk kepentingan retorika (<em>rhetoric</em>) atau seni berpidato di depan umum (<em>public speaking</em>).
+                    </p>
+
+                    <!-- Interactive Appeals Triangle -->
+                    <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl space-y-6">
+                        <div class="text-center max-w-md mx-auto">
+                            <span class="text-xs text-brand-400 font-bold uppercase tracking-wider">3 Elemen Pembuktian Retorika (Rhetorical Appeals)</span>
+                            <h4 class="text-lg font-bold">Pilih Unsur Persuasi Aristoteles</h4>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <button onclick="showAppeal('ethos')" id="app-ethos" class="appeal-card p-4 rounded-xl bg-slate-800 border border-brand-500 text-left hover:border-brand-400 transition">
+                                <span class="text-brand-400 font-bold text-lg block">Ethos</span>
+                                <span class="text-xs text-slate-300 block mt-1">Kredibilitas & Karakter Moral</span>
+                            </button>
+                            <button onclick="showAppeal('pathos')" id="app-pathos" class="appeal-card p-4 rounded-xl bg-slate-800 border border-slate-700 text-left hover:border-brand-400 transition">
+                                <span class="text-rose-400 font-bold text-lg block">Pathos</span>
+                                <span class="text-xs text-slate-300 block mt-1">Emosi & Empati Pendengar</span>
+                            </button>
+                            <button onclick="showAppeal('logos')" id="app-logos" class="appeal-card p-4 rounded-xl bg-slate-800 border border-slate-700 text-left hover:border-brand-400 transition">
+                                <span class="text-emerald-400 font-bold text-lg block">Logos</span>
+                                <span class="text-xs text-slate-300 block mt-1">Logika, Fakta, & Penalaran</span>
+                            </button>
+                        </div>
+
+                        <div id="appeal-detail-box" class="bg-slate-800 p-4 rounded-xl border border-slate-700 text-sm text-slate-300">
+                            <strong>Ethos:</strong> Berfokus pada kredibilitas, kualifikasi akademis, dan integritas moral orator agar pendengar percaya sejak awal.
+                        </div>
+                    </div>
+
+                    <!-- Diagram Flow -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <div class="flex flex-col md:flex-row items-center justify-around gap-4 text-center font-bold text-slate-700">
+                            <div class="bg-white p-3 rounded-lg border w-full md:w-auto shadow-sm">Speaker (Pembicara)</div>
+                            <i class="fa-solid fa-arrow-right text-brand-600 hidden md:block"></i>
+                            <i class="fa-solid fa-arrow-down text-brand-600 md:hidden"></i>
+                            <div class="bg-white p-3 rounded-lg border w-full md:w-auto shadow-sm">Speech (Pesan Pidato)</div>
+                            <i class="fa-solid fa-arrow-right text-brand-600 hidden md:block"></i>
+                            <i class="fa-solid fa-arrow-down text-brand-600 md:hidden"></i>
+                            <div class="bg-white p-3 rounded-lg border w-full md:w-auto shadow-sm">Audience (Pendengar)</div>
+                            <i class="fa-solid fa-arrow-right text-brand-600 hidden md:block"></i>
+                            <i class="fa-solid fa-arrow-down text-brand-600 md:hidden"></i>
+                            <div class="bg-brand-50 text-brand-700 p-3 rounded-lg border border-brand-200 w-full md:w-auto">Effect (Dampak Persuasi)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODEL 3: LASSWELL -->
+            <div id="model-lasswell" class="model-detail-card hidden space-y-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Model 3 • Formula Lasswell (1948)</span>
+                            <h3 class="text-2xl font-bold text-slate-900">Model Lasswell</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-semibold">Linier 5 Komponen</span>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        Harold D. Lasswell merumuskan model komunikasi linier melalui lima pertanyaan kunci. Model ini sangat terkenal karena sekaligus memetakan fokus kajian/riset dalam ilmu komunikasi.
+                    </p>
+
+                    <!-- Interactive Lasswell Pipeline -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-bold text-blue-600 uppercase">1. Who</span>
+                            <h5 class="font-bold text-slate-800 text-sm">Sender</h5>
+                            <span class="text-[11px] bg-blue-200 text-blue-800 px-2 py-0.5 rounded font-medium block">Control Analysis</span>
+                        </div>
+                        <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-bold text-indigo-600 uppercase">2. Says What</span>
+                            <h5 class="font-bold text-slate-800 text-sm">Message</h5>
+                            <span class="text-[11px] bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded font-medium block">Content Analysis</span>
+                        </div>
+                        <div class="bg-purple-50 border border-purple-200 p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-bold text-purple-600 uppercase">3. In Which Channel</span>
+                            <h5 class="font-bold text-slate-800 text-sm">Medium</h5>
+                            <span class="text-[11px] bg-purple-200 text-purple-800 px-2 py-0.5 rounded font-medium block">Media Analysis</span>
+                        </div>
+                        <div class="bg-pink-50 border border-pink-200 p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-bold text-pink-600 uppercase">4. To Whom</span>
+                            <h5 class="font-bold text-slate-800 text-sm">Receiver</h5>
+                            <span class="text-[11px] bg-pink-200 text-pink-800 px-2 py-0.5 rounded font-medium block">Audience Analysis</span>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl space-y-2">
+                            <span class="text-xs font-bold text-emerald-600 uppercase">5. With What Effect</span>
+                            <h5 class="font-bold text-slate-800 text-sm">Effect</h5>
+                            <span class="text-[11px] bg-emerald-200 text-emerald-800 px-2 py-0.5 rounded font-medium block">Effect Analysis</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-slate-800 mb-2"><i class="fa-solid fa-bullhorn text-brand-600"></i> Contoh Kasus Lasswell</h4>
+                        <p class="text-sm text-slate-600">
+                            <strong>Pemerintah</strong> (<em>Who</em>) menyiarkan <strong>imbauan keselamatan bencana</strong> (<em>Says What</em>) melalui <strong>televisi nasional</strong> (<em>In Which Channel</em>) kepada <strong>warga pesisir</strong> (<em>To Whom</em>) sehingga <strong>warga segera mengungsi ke tempat aman</strong> (<em>With What Effect</em>).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODEL 4: SHANNON & WEAVER -->
+            <div id="model-shannon" class="model-detail-card hidden space-y-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Model 4 • Model Matematis Telekomunikasi (1949)</span>
+                            <h3 class="text-2xl font-bold text-slate-900">Model Shannon dan Weaver</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-semibold">Linier Teknis</span>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        Dirancang oleh Claude Shannon dan Warren Weaver untuk menjelaskan transmisi pesan melalui teknologi telekomunikasi (seperti telepon atau radio). Model ini merupakan yang pertama memasukkan variabel <strong>Noise (Gangguan)</strong>.
+                    </p>
+
+                    <!-- Noise Interactive Simulator -->
+                    <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl space-y-6">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                            <div>
+                                <h4 class="font-bold text-brand-400 text-base"><i class="fa-solid fa-tower-cell"></i> Simulator Distorsi Sinyal (Noise Level)</h4>
+                                <p class="text-xs text-slate-400">Geser slider gangguan untuk melihat transmisi pesan di Tujuan</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs text-slate-400">Tingkat Noise:</span>
+                                <input type="range" id="noise-slider" min="0" max="100" value="10" oninput="updateNoiseSimulation()" class="w-32 accent-brand-500">
+                                <span id="noise-val" class="text-xs font-bold text-amber-400 w-8">10%</span>
+                            </div>
+                        </div>
+
+                        <!-- Transmisi Visualization -->
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-center text-xs">
+                            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                                <span class="text-slate-400 block font-semibold">1. Info Source</span>
+                                <span class="text-white font-bold block mt-1">"Halo, besok ujian jam 8"</span>
+                            </div>
+                            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                                <span class="text-slate-400 block font-semibold">2. Transmitter</span>
+                                <span class="text-white font-bold block mt-1">Mikrofon Telepon</span>
+                            </div>
+                            <div id="noise-channel-box" class="bg-slate-800 p-3 rounded-lg border-2 border-brand-500 relative">
+                                <span class="text-slate-400 block font-semibold">3. Channel & Noise</span>
+                                <span id="noise-status-text" class="text-emerald-400 font-bold block mt-1">Sinyal Jernih</span>
+                            </div>
+                            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                                <span class="text-slate-400 block font-semibold">4. Receiver</span>
+                                <span class="text-white font-bold block mt-1">Speaker Penerima</span>
+                            </div>
+                            <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                                <span class="text-slate-400 block font-semibold">5. Destination</span>
+                                <span id="destination-output" class="text-emerald-300 font-bold block mt-1">"Halo, besok ujian jam 8"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODEL 5: SCHRAMM -->
+            <div id="model-schramm" class="model-detail-card hidden space-y-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Model 5 • Interaktif & Field of Experience (1954)</span>
+                            <h3 class="text-2xl font-bold text-slate-900">Model Schramm</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-semibold">Sirkular Interaktif</span>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        Wilbur Schramm mengubah paradigma komunikasi dari linier kaku menjadi <strong>sirkular interaktif</strong> serta memperkenalkan konsep vital: <strong>Field of Experience (Bidang Pengalaman)</strong>.
+                    </p>
+
+                    <!-- Field of Experience Interactive Slider -->
+                    <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-2xl space-y-6">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                            <div>
+                                <h4 class="font-bold text-brand-400 text-base"><i class="fa-solid fa-bullseye"></i> Simulasi Irisan "Field of Experience"</h4>
+                                <p class="text-xs text-slate-400">Atur tingkat kesamaan latar belakang pengirim dan penerima</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <input type="range" id="foe-slider" min="0" max="100" value="70" oninput="updateFoeSimulation()" class="w-36 accent-brand-500">
+                                <span id="foe-val" class="text-xs font-bold text-brand-300">70% Overlap</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex flex-col items-center space-y-4">
+                            <div class="w-full max-w-md h-24 bg-slate-900 rounded-xl relative overflow-hidden flex items-center justify-center">
+                                <div id="circle-sender" class="w-20 h-20 bg-blue-500/40 border-2 border-blue-400 rounded-full absolute flex items-center justify-center text-[10px] font-bold transition-all duration-300" style="left: 20%;">
+                                    Pengirim
+                                </div>
+                                <div id="circle-receiver" class="w-20 h-20 bg-indigo-500/40 border-2 border-indigo-400 rounded-full absolute flex items-center justify-center text-[10px] font-bold transition-all duration-300" style="right: 20%;">
+                                    Penerima
+                                </div>
+                            </div>
+
+                            <p id="foe-result-text" class="text-xs text-center font-medium text-emerald-300">
+                                Keberhasilan Komunikasi Tinggi: Kedua pihak memiliki bahasa & latar belakang pemahaman yang sama.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODEL 6: BERLO (SMCR) -->
+            <div id="model-berlo" class="model-detail-card hidden space-y-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div>
+                            <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase">Model 6 • SMCR Model (1960)</span>
+                            <h3 class="text-2xl font-bold text-slate-900">Model Berlo (SMCR)</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold">Linier Kompleks</span>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        David K. Berlo membedah faktor-faktor internal manusia serta 5 panca indera yang mempengaruhi setiap komponen utama dalam komunikasi (Source, Message, Channel, Receiver).
+                    </p>
+
+                    <!-- SMCR 4 Column Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Source -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+                                <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm">S</div>
+                                <h4 class="font-bold text-slate-800 text-sm">SOURCE (Sumber)</h4>
+                            </div>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                                <li>Comm. Skills</li>
+                                <li>Attitudes (Sikap)</li>
+                                <li>Knowledge</li>
+                                <li>Social System</li>
+                                <li>Culture</li>
+                            </ul>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">M</div>
+                                <h4 class="font-bold text-slate-800 text-sm">MESSAGE (Pesan)</h4>
+                            </div>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                                <li>Content (Isi)</li>
+                                <li>Elements (Simbol)</li>
+                                <li>Treatment (Gaya)</li>
+                                <li>Structure (Alur)</li>
+                                <li>Code (Bahasa)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Channel -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+                                <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold text-sm">C</div>
+                                <h4 class="font-bold text-slate-800 text-sm">CHANNEL (Saluran)</h4>
+                            </div>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                                <li>Seeing (Penglihatan)</li>
+                                <li>Hearing (Pendengaran)</li>
+                                <li>Touching (Rabaan)</li>
+                                <li>Smelling (Penciuman)</li>
+                                <li>Tasting (Pencicipan)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Receiver -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">R</div>
+                                <h4 class="font-bold text-slate-800 text-sm">RECEIVER (Penerima)</h4>
+                            </div>
+                            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                                <li>Comm. Skills</li>
+                                <li>Attitudes (Sikap)</li>
+                                <li>Knowledge</li>
+                                <li>Social System</li>
+                                <li>Culture</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MATRIKS PERBANDINGAN -->
+        <section id="section-matriks" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">Matriks Perbandingan 6 Model Komunikasi</h2>
+                        <p class="text-sm text-slate-600">Bandingkan sifat alur, keunggulan, dan keterbatasan masing-masing model.</p>
+                    </div>
+
+                    <!-- Search Filter Input -->
+                    <div class="relative w-full sm:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+                        <input type="text" id="matrix-search" oninput="filterMatrix()" placeholder="Cari model / kata kunci..." class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <!-- Responsive Table Wrapper -->
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left text-sm text-slate-600">
+                        <thead class="bg-slate-100 text-slate-800 uppercase text-xs font-bold">
+                            <tr>
+                                <th class="p-3.5 rounded-l-lg">Model</th>
+                                <th class="p-3.5">Tokoh Utama</th>
+                                <th class="p-3.5">Sifat Alur</th>
+                                <th class="p-3.5">Komponen Utama</th>
+                                <th class="p-3.5">Keunggulan</th>
+                                <th class="p-3.5 rounded-r-lg">Keterbatasan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matrix-tbody" class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-3.5 font-bold text-slate-900">S - R</td>
+                                <td class="p-3.5">Psikolog Behavioris</td>
+                                <td class="p-3.5"><span class="px-2 py-1 bg-amber-100 text-amber-800 text-[11px] font-semibold rounded">Linier</span></td>
+                                <td class="p-3.5">Stimulus &rarr; Response</td>
+                                <td class="p-3.5 text-xs">Sangat sederhana & mudah dipahami.</td>
+                                <td class="p-3.5 text-xs text-rose-600">Mengabaikan proses mental & umpan balik.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-3.5 font-bold text-slate-900">Aristoteles</td>
+                                <td class="p-3.5">Aristoteles</td>
+                                <td class="p-3.5"><span class="px-2 py-1 bg-amber-100 text-amber-800 text-[11px] font-semibold rounded">Linier</span></td>
+                                <td class="p-3.5">Speaker &rarr; Speech &rarr; Audience</td>
+                                <td class="p-3.5 text-xs">Menekankan persuasi (Ethos, Pathos, Logos).</td>
+                                <td class="p-3.5 text-xs text-rose-600">Tidak ada umpan balik & konsep noise.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-3.5 font-bold text-slate-900">Lasswell</td>
+                                <td class="p-3.5">Harold D. Lasswell</td>
+                                <td class="p-3.5"><span class="px-2 py-1 bg-amber-100 text-amber-800 text-[11px] font-semibold rounded">Linier</span></td>
+                                <td class="p-3.5">Who &rarr; Says What &rarr; Channel...</td>
+                                <td class="p-3.5 text-xs">Membagi bidang analisis riset komunikasi.</td>
+                                <td class="p-3.5 text-xs text-rose-600">Cenderung terlalu sederhana & searah.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-3.5 font-bold text-slate-900">Shannon & Weaver</td>
+                                <td class="p-3.5">Claude Shannon & Warren Weaver</td>
+                                <td class="p-3.5"><span class="px-2 py-1 bg-blue-100 text-blue-800 text-[11px] font-semibold rounded">Linier Teknis</span></td>
+                                <td class="p-3.5">Info Source &rarr; Noise &rarr; Receiver</td>
+                                <td class="p-3.5 text-xs">Memasukkan variabel Noise (Gangguan).</td>
+                                <td class="p-3.5 text-xs text-rose-600">Terfokus pada transmisi teknis gelombang.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-3.5 font-bold text-slate-900">Schramm</td>
+                                <td class="p-3.5">Wilbur Schramm</td>
+                                <td class="p-3.5"><span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-[11px] font-semibold rounded">Sirkular</span></td>
+                                <td class="p-3.5">Encoder/Decoder & Field of Experience</td>
+                                <td class="p-3.5 text-xs">Memperkenalkan Feedback & Field of Experience.</td>
+                                <td class="p-3.5 text-xs text-rose-600">Kurang menekankan komunikasi massa luas.</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-3.5 font-bold text-slate-900">Berlo (SMCR)</td>
+                                <td class="p-3.5">David K. Berlo</td>
+                                <td class="p-3.5"><span class="px-2 py-1 bg-purple-100 text-purple-800 text-[11px] font-semibold rounded">Linier Kompleks</span></td>
+                                <td class="p-3.5">Source &rarr; Message &rarr; Channel &rarr; Receiver</td>
+                                <td class="p-3.5 text-xs">Menganalisis faktor manusia & 5 panca indera.</td>
+                                <td class="p-3.5 text-xs text-rose-600">Tidak menampilkan feedback eksplisit.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: LEMBAR KERJA & STUDI KASUS -->
+        <section id="section-lembar-kerja" class="tab-content hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Lembar Kerja Mahasiswa & Analisis Studi Kasus</h2>
+                    <p class="text-sm text-slate-600">Kerjakan latihan analisis kasus di bawah ini sebagai penerapan materi perkuliahan.</p>
+                </div>
+
+                <!-- Case Study 1 -->
+                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-brand-100 text-brand-800 text-xs font-bold rounded-full">Studi Kasus 1</span>
+                        <span class="text-xs text-slate-500">Model SMCR & Model Schramm</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">Konflik Instruksi Startup via WhatsApp</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Sebuah perusahaan rintisan (<em>startup</em>) mengalami konflik internal karena instruksi manajer senior yang disampaikan via <em>chat</em> grup WhatsApp sering disalahartikan oleh staf generasi muda.
+                    </p>
+
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                        <label class="block text-xs font-bold text-slate-700">
+                            <i class="fa-solid fa-pen"></i> Tugas Mahasiswa: Analisis penyebab kesalahpahaman berdasarkan faktor <em>Field of Experience</em>, <em>Communication Skills</em>, <em>Culture</em>, dan <em>Treatment of Message</em>!
+                        </label>
+                        <textarea id="case1-notes" rows="4" placeholder="Tuliskan analisis Anda di sini..." class="w-full p-3 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+                        <div class="flex justify-between items-center">
+                            <button onclick="saveCaseNotes('case1')" class="px-3 py-1.5 bg-brand-600 text-white text-xs font-semibold rounded-lg hover:bg-brand-500 transition">
+                                <i class="fa-solid fa-floppy-disk"></i> Simpan Catatan
+                            </button>
+                            <button onclick="toggleHint('hint1')" class="text-xs text-brand-600 font-semibold hover:underline">
+                                Clue / Petunjuk Jawaban <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div id="hint1" class="hidden p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800">
+                            <strong>Petunjuk:</strong> Perbedaan generasi mempengaruhi <em>Field of Experience</em> dan <em>Culture</em>. Pesan teks singkat (WhatsApp) sering kali kekurangan dimensi emosional/suara (<em>Treatment</em>), sehingga staf muda menafsirkannya secara berbeda dari maksud manajer senior.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-brand-100 text-brand-800 text-xs font-bold rounded-full">Studi Kasus 2</span>
+                        <span class="text-xs text-slate-500">Model Shannon & Weaver</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base">Hambatan Kuliah Daring via Zoom</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Saat perkuliahan daring melalui Zoom, suara dosen sering kali terputus-putus akibat sinyal internet yang tidak stabil, sehingga mahasiswa gagal memahami materi kuliah.
+                    </p>
+
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                        <label class="block text-xs font-bold text-slate-700">
+                            <i class="fa-solid fa-sitemap"></i> Identifikasi Komponen Model Shannon & Weaver:
+                        </label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                            <div>
+                                <span class="font-bold text-slate-600 block">Information Source:</span>
+                                <input type="text" placeholder="misal: Pikiran Dosen" class="w-full p-2 border border-slate-300 rounded-lg mt-1">
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-600 block">Transmitter:</span>
+                                <input type="text" placeholder="misal: Mikrofon & Aplikasi Zoom" class="w-full p-2 border border-slate-300 rounded-lg mt-1">
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-600 block">Noise Source:</span>
+                                <input type="text" placeholder="misal: Sinyal Internet unstable" class="w-full p-2 border border-slate-300 rounded-lg mt-1">
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-600 block">Destination:</span>
+                                <input type="text" placeholder="misal: Mahasiswa / Pendengar" class="w-full p-2 border border-slate-300 rounded-lg mt-1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: KUIS EVALUASI (SELF-ASSESSMENT) -->
+        <section id="section-quiz" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">Self-Assessment / Kuis Mandiri</h2>
+                        <p class="text-sm text-slate-600">Uji pemahaman Anda mengenai 6 model komunikasi melalui 4 pertanyaan pilihan ganda.</p>
+                    </div>
+                    <div id="quiz-score-badge" class="px-4 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 text-center">
+                        Skor Kuis: <span id="quiz-score" class="text-brand-600 text-base">0 / 4</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div class="space-y-6" id="quiz-container">
+                    <!-- Q1 -->
+                    <div class="p-5 border border-slate-200 rounded-xl space-y-3 bg-slate-50" id="qbox-1">
+                        <span class="text-xs font-bold text-brand-600">Soal 1 dari 4</span>
+                        <p class="font-semibold text-slate-800 text-sm">Unsur komunikasi yang menekankan pada kredibilitas dan karakter moral pembicara dalam model retorika Aristoteles disebut:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <button onclick="checkAnswer(1, 'a')" class="qopt-1 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">a. Pathos</button>
+                            <button onclick="checkAnswer(1, 'b')" class="qopt-1 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">b. Logos</button>
+                            <button onclick="checkAnswer(1, 'c')" class="qopt-1 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">c. Ethos</button>
+                            <button onclick="checkAnswer(1, 'd')" class="qopt-1 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">d. Noise</button>
+                        </div>
+                        <div id="qexplain-1" class="hidden p-3 rounded-lg text-xs"></div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-5 border border-slate-200 rounded-xl space-y-3 bg-slate-50" id="qbox-2">
+                        <span class="text-xs font-bold text-brand-600">Soal 2 dari 4</span>
+                        <p class="font-semibold text-slate-800 text-sm">Model komunikasi yang memperkenalkan konsep Field of Experience dan dipandang sebagai model sirkular adalah:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <button onclick="checkAnswer(2, 'a')" class="qopt-2 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">a. Model Lasswell</button>
+                            <button onclick="checkAnswer(2, 'b')" class="qopt-2 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">b. Model Schramm</button>
+                            <button onclick="checkAnswer(2, 'c')" class="qopt-2 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">c. Model S - R</button>
+                            <button onclick="checkAnswer(2, 'd')" class="qopt-2 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">d. Model Shannon & Weaver</button>
+                        </div>
+                        <div id="qexplain-2" class="hidden p-3 rounded-lg text-xs"></div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="p-5 border border-slate-200 rounded-xl space-y-3 bg-slate-50" id="qbox-3">
+                        <span class="text-xs font-bold text-brand-600">Soal 3 dari 4</span>
+                        <p class="font-semibold text-slate-800 text-sm">Pertanyaan "In Which Channel" dalam Formula Lasswell berfokus pada studi analisis:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <button onclick="checkAnswer(3, 'a')" class="qopt-3 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">a. Control Analysis</button>
+                            <button onclick="checkAnswer(3, 'b')" class="qopt-3 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">b. Content Analysis</button>
+                            <button onclick="checkAnswer(3, 'c')" class="qopt-3 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">c. Audience Analysis</button>
+                            <button onclick="checkAnswer(3, 'd')" class="qopt-3 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">d. Media Analysis</button>
+                        </div>
+                        <div id="qexplain-3" class="hidden p-3 rounded-lg text-xs"></div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="p-5 border border-slate-200 rounded-xl space-y-3 bg-slate-50" id="qbox-4">
+                        <span class="text-xs font-bold text-brand-600">Soal 4 dari 4</span>
+                        <p class="font-semibold text-slate-800 text-sm">Salah satu kelebihan utama dari Model Shannon dan Weaver dibandingkan model-model linier sebelumnya adalah:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                            <button onclick="checkAnswer(4, 'a')" class="qopt-4 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">a. Menjelaskan konsep noise (gangguan)</button>
+                            <button onclick="checkAnswer(4, 'b')" class="qopt-4 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">b. Memperhitungkan iklim sosial-budaya</button>
+                            <button onclick="checkAnswer(4, 'c')" class="qopt-4 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">c. Mengutamakan emosi penerima pesan</button>
+                            <button onclick="checkAnswer(4, 'd')" class="qopt-4 text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition">d. Berfokus pada pidato politik satu arah</button>
+                        </div>
+                        <div id="qexplain-4" class="hidden p-3 rounded-lg text-xs"></div>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex justify-end">
+                    <button onclick="resetQuiz()" class="px-4 py-2 border border-slate-300 text-slate-700 text-xs font-semibold rounded-xl hover:bg-slate-100 transition">
+                        <i class="fa-solid fa-rotate-right"></i> Ulangi Kuis
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs border-t border-slate-800 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p>Dokumen Modul Perkuliahan ini disiapkan sebagai materi bahan ajar matakuliah <strong>Pengantar Ilmu Komunikasi</strong> (S-1).</p>
+            <p class="text-slate-500">&copy; 2026 Interactive Learning Module • Model-Model Komunikasi</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabKey) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-slate-400');
+            });
+
+            // Show current tab content
+            const targetSection = document.getElementById('section-' + tabKey);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
+            // Highlight current tab button
+            const targetBtn = document.getElementById('tab-' + tabKey);
+            if (targetBtn) {
+                targetBtn.classList.add('tab-active');
+                targetBtn.classList.remove('text-slate-400');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToSection(tabKey) {
+            switchTab(tabKey);
+        }
+
+        function showModel(modelKey) {
+            document.querySelectorAll('.model-detail-card').forEach(card => card.classList.add('hidden'));
+            document.querySelectorAll('.model-nav-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white');
+                btn.classList.add('bg-slate-200', 'text-slate-700');
+            });
+
+            const card = document.getElementById('model-' + modelKey);
+            if (card) card.classList.remove('hidden');
+
+            const btn = document.getElementById('mbtn-' + modelKey);
+            if (btn) {
+                btn.classList.add('bg-brand-600', 'text-white');
+                btn.classList.remove('bg-slate-200', 'text-slate-700');
+            }
+        }
+
+        // S-R Simulation
+        function triggerSR(type) {
+            const respBox = document.getElementById('sr-response-box');
+            const respText = document.getElementById('sr-response-text');
+
+            if (type === 'lambaian') {
+                respBox.className = 'w-48 p-4 rounded-xl bg-brand-900 border-2 border-brand-400 text-center transition-all duration-300 scale-105';
+                respText.innerText = '👋 Balas Melambaikan Tangan!';
+                respText.className = 'text-base font-bold text-brand-300 mt-1 block';
+            } else {
+                respBox.className = 'w-48 p-4 rounded-xl bg-indigo-900 border-2 border-indigo-400 text-center transition-all duration-300 scale-105';
+                respText.innerText = '🛍️ Langsung Membeli Produk!';
+                respText.className = 'text-base font-bold text-indigo-300 mt-1 block';
+            }
+        }
+
+        // Aristoteles Appeals Detail
+        function showAppeal(type) {
+            const detailBox = document.getElementById('appeal-detail-box');
+            if (type === 'ethos') {
+                detailBox.innerHTML = '<strong>Ethos:</strong> Berfokus pada kredibilitas, keahlian akademis, dan integritas moral orator agar pendengar percaya sejak awal.';
+            } else if (type === 'pathos') {
+                detailBox.innerHTML = '<strong>Pathos:</strong> Berfokus pada daya tarik emosional, empati, dan perasaan pendengar untuk menggerakkan nurani audiens.';
+            } else if (type === 'logos') {
+                detailBox.innerHTML = '<strong>Logos:</strong> Berfokus pada kekuatan argumen rasional, data faktual, dan alur berpikir yang logis.';
+            }
+        }
+
+        // Shannon & Weaver Noise Simulation
+        function updateNoiseSimulation() {
+            const val = document.getElementById('noise-slider').value;
+            document.getElementById('noise-val').innerText = val + '%';
+
+            const statusText = document.getElementById('noise-status-text');
+            const destOutput = document.getElementById('destination-output');
+
+            if (val < 25) {
+                statusText.innerText = 'Sinyal Jernih';
+                statusText.className = 'text-emerald-400 font-bold block mt-1';
+                destOutput.innerText = '"Halo, besok ujian jam 8"';
+                destOutput.className = 'text-emerald-300 font-bold block mt-1';
+            } else if (val < 65) {
+                statusText.innerText = 'Noise Sedang';
+                statusText.className = 'text-amber-400 font-bold block mt-1';
+                destOutput.innerText = '"Halo, bes... uji... jam 8"';
+                destOutput.className = 'text-amber-300 font-bold block mt-1';
+            } else {
+                statusText.innerText = 'Noise Tinggi (Distorsi)';
+                statusText.className = 'text-rose-400 font-bold block mt-1';
+                destOutput.innerText = '"H... zzz... jam... ???"';
+                destOutput.className = 'text-rose-400 font-bold block mt-1';
+            }
+        }
+
+        // Schramm Field of Experience Simulation
+        function updateFoeSimulation() {
+            const val = document.getElementById('foe-slider').value;
+            document.getElementById('foe-val').innerText = val + '% Overlap';
+
+            const sender = document.getElementById('circle-sender');
+            const receiver = document.getElementById('circle-receiver');
+            const resText = document.getElementById('foe-result-text');
+
+            // Shift circles closer or farther
+            const offset = (100 - val) * 0.25;
+            sender.style.left = (20 - offset/2) + '%';
+            receiver.style.right = (20 - offset/2) + '%';
+
+            if (val > 60) {
+                resText.innerText = 'Keberhasilan Komunikasi Tinggi: Kedua pihak memiliki bidang pemahaman yang sangat beririsan.';
+                resText.className = 'text-xs text-center font-medium text-emerald-300';
+            } else if (val > 30) {
+                resText.innerText = 'Keberhasilan Komunikasi Sedang: Terjadi beberapa kesalahpahaman istilah atau budaya.';
+                resText.className = 'text-xs text-center font-medium text-amber-300';
+            } else {
+                resText.innerText = 'Kegagalan Komunikasi / Distorsi: Tidak ada iris bidang pengalaman (bahasa/latar belakang berbeda).';
+                resText.className = 'text-xs text-center font-medium text-rose-400';
+            }
+        }
+
+        function filterMatrix() {
+            const query = document.getElementById('matrix-search').value.toLowerCase();
+            const rows = document.querySelectorAll('#matrix-tbody tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+
+        function saveCaseNotes(caseId) {
+            const text = document.getElementById(caseId + '-notes').value;
+            if (text.trim() === '') return;
+            localStorage.setItem('case_notes_' + caseId, text);
+            
+            // Show toast message
+            showToast('Catatan analisis berhasil disimpan!');
+        }
+
+        function toggleHint(hintId) {
+            const hint = document.getElementById(hintId);
+            hint.classList.toggle('hidden');
+        }
+
+        const answers = { 1: 'c', 2: 'b', 3: 'd', 4: 'a' };
+        const explanations = {
+            1: "Jawaban Benar: c (Ethos). Ethos menekankan kredibilitas dan integritas moral pembicara.",
+            2: "Jawaban Benar: b (Model Schramm). Schramm memperkenalkan komunikasi sirkular dan konsep Field of Experience.",
+            3: "Jawaban Benar: d (Media Analysis). Pertanyaan 'In Which Channel' berfokus pada analisis saluran/media.",
+            4: "Jawaban Benar: a (Menjelaskan konsep noise). Model Shannon-Weaver adalah model pertama yang memasukkan variabel Noise."
+        };
+
+        let userScores = { 1: false, 2: false, 3: false, 4: false };
+
+        function checkAnswer(qNum, selected) {
+            const correct = answers[qNum];
+            const opts = document.querySelectorAll('.qopt-' + qNum);
+            const explainBox = document.getElementById('qexplain-' + qNum);
+
+            opts.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-slate-100');
+            });
+
+            if (selected === correct) {
+                userScores[qNum] = true;
+                explainBox.className = "p-3 rounded-lg text-xs bg-emerald-100 text-emerald-800 border border-emerald-200 mt-2";
+            } else {
+                userScores[qNum] = false;
+                explainBox.className = "p-3 rounded-lg text-xs bg-rose-100 text-rose-800 border border-rose-200 mt-2";
+            }
+
+            explainBox.innerText = explanations[qNum];
+            explainBox.classList.remove('hidden');
+
+            updateQuizScore();
+        }
+
+        function updateQuizScore() {
+            const scoreCount = Object.values(userScores).filter(Boolean).length;
+            document.getElementById('quiz-score').innerText = scoreCount + ' / 4';
+            updateProgress();
+        }
+
+        function resetQuiz() {
+            userScores = { 1: false, 2: false, 3: false, 4: false };
+            for (let i = 1; i <= 4; i++) {
+                const opts = document.querySelectorAll('.qopt-' + i);
+                opts.forEach(btn => {
+                    btn.disabled = false;
+                    btn.className = "qopt-" + i + " text-left p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 transition";
+                });
+                const explainBox = document.getElementById('qexplain-' + i);
+                explainBox.classList.add('hidden');
+            }
+            updateQuizScore();
+        }
+
+        function updateProgress() {
+            const cpmkChecked = document.querySelectorAll('.cpmk-check:checked').length;
+            const quizScore = Object.values(userScores).filter(Boolean).length;
+
+            const totalProgress = Math.round(((cpmkChecked / 3) * 50) + ((quizScore / 4) * 50));
+            document.getElementById('learning-progress').style.width = totalProgress + '%';
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-2.5 rounded-xl text-xs font-semibold shadow-xl z-50 transition-opacity duration-300';
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        // Load saved notes if available
+        window.onload = function() {
+            const saved1 = localStorage.getItem('case_notes_case1');
+            if (saved1) document.getElementById('case1-notes').value = saved1;
+        };
+    </script>
+</body>
+</html>
